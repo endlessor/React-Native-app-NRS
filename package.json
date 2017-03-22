@@ -26,6 +26,7 @@
     "react-native-maps": "^0.13.0",
     "react-native-modal-dropdown": "^0.4.1",
     "react-native-nav": "^1.1.4",
+    "react-native-smart-sudoku-grid": "^1.0.9",
     "react-native-swiper": "^1.5.4",
     "react-native-vector-icons": "git+https://github.com/NajibRajak/react-native-vector-icons.git",
     "react-redux": "^5.0.2",

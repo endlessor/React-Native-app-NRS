@@ -37,5 +37,20 @@ export default StyleSheet.create({
     ...Styles.center,
     width: Metrics.screenWidth / 12,
     height: Metrics.screenWidth / 12,
+  },  
+  headerView: {
+    height: 50,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: Metrics.screenWidth,
+    borderColor: '#EEE',
+    shadowOpacity: 0.5,
+    shadowOffset: {
+      width: 0, height: 8,
+    },
+    shadowColor: '#000',
+    shadowRadius: 4,
+    elevation: 8
   },
 });
