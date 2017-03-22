@@ -16,8 +16,8 @@ import homeData from '../../dummy/homeData.json';
 import Global from '@src/Global';
 import Rating from '@components/Rating';
 
-// const { BlurView, VibrancyView } = require('react-native-blur');
-import {BlurView} from 'react-native-blur';
+const { BlurView, VibrancyView } = require('react-native-blur');
+// import {BlurView} from 'react-native-blur';
 
 
 class TabHome extends Component {
@@ -54,7 +54,7 @@ class TabHome extends Component {
                 style={{width: Metrics.screenWidth, height: Metrics.screenHeight * 0.5}}
                 resizeMode={'contain'}
                 source={Images.store2} >
-                
+                  <BlurView blurType="dark" blurAmount={10} style={{ position: 'absolute', right: 0, left: 0, top: 0, bottom: 0}}>
                   <View style={{ flex:1, backgroundColor: 'transparent'}}></View>
                   <View style={[Styles.center, { flex:1.3, flexDirection: 'row', backgroundColor: 'transparent'}]}>
                     <View style={Styles.center}>
@@ -91,6 +91,7 @@ class TabHome extends Component {
                   <View style={[Styles.center, { flex:1, backgroundColor: 'transparent'}]}>
                     <Text style={{fontSize: 10, color: Colors.textSecondary}}>Monday to Friday 4:30AM~8PM</Text>
                   </View>
+                  </BlurView>
               </Image>  
             </View>
             <View style={{width: Metrics.screenWidth, height: Metrics.screenHeight * 0.5}}>
@@ -98,7 +99,7 @@ class TabHome extends Component {
                 style={{width: Metrics.screenWidth, height: Metrics.screenHeight * 0.5}}
                 resizeMode={'contain'}
                 source={Images.store3} >
-                
+                  <BlurView blurType="dark" blurAmount={10} style={{ position: 'absolute', right: 0, left: 0, top: 0, bottom: 0}}>
                   <View style={{ flex:1, backgroundColor: 'transparent'}}></View>
                   <View style={[Styles.center, { flex:1.3, flexDirection: 'row', backgroundColor: 'transparent'}]}>
                     <View style={Styles.center}>
@@ -135,6 +136,7 @@ class TabHome extends Component {
                   <View style={[Styles.center, { flex:1, backgroundColor: 'transparent'}]}>
                     <Text style={{fontSize: 10, color: Colors.textSecondary}}>Monday to Friday 4:30AM~8PM</Text>
                   </View>
+                  </BlurView>
               </Image>
             </View>
           </Swiper>
