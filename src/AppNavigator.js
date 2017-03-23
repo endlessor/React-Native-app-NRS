@@ -12,6 +12,8 @@ import { Colors } from '@theme';
 
 import Splash from '@containers/Splash';
 import Home from '@containers/Home';
+import Store from '@containers/Store';
+import Product from '@containers/Product';
 
 import SideBar from '@containers/SideBar';
 
@@ -92,6 +94,10 @@ class AppNavigator extends Component {
         return <Splash navigator={navigator} {...route.passProps} />;
       case 'home':
         return <Home navigator={navigator} {...route.passProps} />;
+      case 'store':
+        return <Store navigator={navigator} {...route.passProps} />;
+      case 'product':
+        return <Product navigator={navigator} {...route.passProps} />;
       default :
         return <Home navigator={navigator} {...route.passProps} />;
     }

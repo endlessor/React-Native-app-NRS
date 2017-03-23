@@ -16,9 +16,6 @@ import homeData from '../../dummy/homeData.json';
 import Global from '@src/Global';
 import Rating from '@components/Rating';
 
-const { BlurView, VibrancyView } = require('react-native-blur');
-// import {BlurView} from 'react-native-blur';
-
 
 class TabHome extends Component {
   constructor(props) {
@@ -67,61 +64,19 @@ class TabHome extends Component {
               containerStyle={Styles.center}
               color={Colors.textPrimary}
               name={'shopping-cart'}/>          
-        </View> 
+        </View>
         <ScrollView>
           <Swiper height={Metrics.screenHeight * 0.5} horizontal={true} style={{backgroundColor: 'yellow'}}>
-            <View style={{width: Metrics.screenWidth, height: Metrics.screenHeight * 0.5}}>
+            <View style={{width: Metrics.screenWidth, height: Metrics.screenHeight * 0.5, backgroundColor: 'black'}}>              
               <Image
-                style={{width: Metrics.screenWidth, height: Metrics.screenHeight * 0.5}}
-                resizeMode={'contain'}
-                source={Images.store2} >
-                  <BlurView blurType="dark" blurAmount={10} style={{ position: 'absolute', right: 0, left: 0, top: 0, bottom: 0}}>
-                  <View style={{ flex:0.5, backgroundColor: 'transparent'}}></View>
-                  <View style={[Styles.center, { flex:1.3, flexDirection: 'row', backgroundColor: 'transparent'}]}>
-                    <View style={Styles.center}>
-                      <Icon
-                        style={{fontSize: 20, color: Colors.textSecondary}}
-                        containerStyle={Styles.center}
-                        color={Colors.textPrimary}
-                        name={'location-arrow'}
-                      />
-                      <Text style={{margin:5, fontSize: 9, color: Colors.textSecondary}}>CHANGE STOREA</Text>        
-                    </View>
-                    <Thumbnail style={{width: Metrics.screenWidth * 0.15, height: Metrics.screenWidth * 0.15, borderRadius: Metrics.screenWidth * 0.075}} source={Images.store2} />
-                    <View style={Styles.center}>
-                      <Icon
-                        style={{fontSize: 20, color: Colors.textSecondary}}
-                        containerStyle={Styles.center}
-                        color={Colors.textPrimary}
-                        name={'heart-o'}
-                      />
-                      <Text style={{margin:5, fontSize: 9, color: Colors.textSecondary}}>SET AS A FAVORITE</Text>        
-                    </View>
-                  </View>
-                  <View style={{ flex:1, backgroundColor: 'transparent', alignItems: 'center'}}>
-                    <Text style={{fontSize: 13, color: Colors.textSecondary}}>STARLING</Text>
-                    <Text style={{fontSize: 10, color: Colors.textSecondary}}>727 MANHATTAN AVE, PROOKLYN, NY 11222, USA</Text>
-                    <Rating
-                      style={{marginTop: 30}}
-                      rating={4}
-                      max={5}
-                      iconWidth={Metrics.starSize / 4}
-                      iconHeight={Metrics.starSize / 4}
-                      editable={false} />
-                  </View>
-                  <View style={[Styles.center, { flex:1, backgroundColor: 'transparent'}]}>
-                    <Text style={{fontSize: 10, color: Colors.textSecondary}}>Monday to Friday 4:30AM~8PM</Text>
-                  </View>
-                  </BlurView>
+                style={{width: Metrics.screenWidth, height: Metrics.screenHeight * 0.5, opacity: 0.5}}
+                resizeMode={'stretch'}
+                source={Images.store2} >                  
               </Image>  
-            </View>
-            <View style={{width: Metrics.screenWidth, height: Metrics.screenHeight * 0.5}}>
-              <Image
-                style={{width: Metrics.screenWidth, height: Metrics.screenHeight * 0.5}}
-                resizeMode={'contain'}
-                source={Images.store3} >
-                  <BlurView blurType="dark" blurAmount={10} style={{ position: 'absolute', right: 0, left: 0, top: 0, bottom: 0}}>
-                  <View style={{ flex:1, backgroundColor: 'transparent'}}></View>
+              <View
+                style={{width: Metrics.screenWidth, height: Metrics.screenHeight * 0.5, position:'absolute', right: 0, left:0, bottom: 0, top: 0}}
+                resizeMode={'stretch'}>
+                <View style={{ flex:0.3, backgroundColor: 'transparent'}}></View>
                   <View style={[Styles.center, { flex:1.3, flexDirection: 'row', backgroundColor: 'transparent'}]}>
                     <View style={Styles.center}>
                       <Icon
@@ -132,7 +87,7 @@ class TabHome extends Component {
                       />
                       <Text style={{margin:5, fontSize: 9, color: Colors.textSecondary}}>CHANGE STORE</Text>        
                     </View>
-                    <Thumbnail style={{width: 100, height: 100, borderRadius: 50}} source={Images.store3} />
+                    <Thumbnail style={{width: Metrics.screenWidth * 0.2, height: Metrics.screenWidth * 0.2, borderRadius: Metrics.screenWidth * 0.1}} source={Images.store2} />
                     <View style={Styles.center}>
                       <Icon
                         style={{fontSize: 20, color: Colors.textSecondary}}
@@ -157,8 +112,194 @@ class TabHome extends Component {
                   <View style={[Styles.center, { flex:1, backgroundColor: 'transparent'}]}>
                     <Text style={{fontSize: 10, color: Colors.textSecondary}}>Monday to Friday 4:30AM~8PM</Text>
                   </View>
-                  </BlurView>
-              </Image>
+              </View>
+            </View>
+            <View style={{width: Metrics.screenWidth, height: Metrics.screenHeight * 0.5, backgroundColor: 'black'}}>              
+              <Image
+                style={{width: Metrics.screenWidth, height: Metrics.screenHeight * 0.5, opacity: 0.5}}
+                resizeMode={'stretch'}
+                source={Images.store3} >                  
+              </Image>  
+              <View
+                style={{width: Metrics.screenWidth, height: Metrics.screenHeight * 0.5, position:'absolute', right: 0, left:0, bottom: 0, top: 0}}
+                resizeMode={'stretch'}>
+                <View style={{ flex:0.3, backgroundColor: 'transparent'}}></View>
+                  <View style={[Styles.center, { flex:1.3, flexDirection: 'row', backgroundColor: 'transparent'}]}>
+                    <View style={Styles.center}>
+                      <Icon
+                        style={{fontSize: 20, color: Colors.textSecondary}}
+                        containerStyle={Styles.center}
+                        color={Colors.textPrimary}
+                        name={'location-arrow'}
+                      />
+                      <Text style={{margin:5, fontSize: 9, color: Colors.textSecondary}}>CHANGE STORE</Text>        
+                    </View>
+                    <Thumbnail style={{width: Metrics.screenWidth * 0.2, height: Metrics.screenWidth * 0.2, borderRadius: Metrics.screenWidth * 0.1}} source={Images.store3} />
+                    <View style={Styles.center}>
+                      <Icon
+                        style={{fontSize: 20, color: Colors.textSecondary}}
+                        containerStyle={Styles.center}
+                        color={Colors.textPrimary}
+                        name={'heart-o'}
+                      />
+                      <Text style={{margin:5, fontSize: 9, color: Colors.textSecondary}}>SET AS A FAVORITE</Text>        
+                    </View>
+                  </View>
+                  <View style={{ flex:1, backgroundColor: 'transparent', alignItems: 'center'}}>
+                    <Text style={{fontSize: 13, color: Colors.textSecondary}}>STARLING</Text>
+                    <Text style={{fontSize: 10, color: Colors.textSecondary}}>727 MANHATTAN AVE, PROOKLYN, NY 11222, USA</Text>
+                    <Rating
+                      style={{marginTop: 30}}
+                      rating={4}
+                      max={5}
+                      iconWidth={Metrics.starSize / 4}
+                      iconHeight={Metrics.starSize / 4}
+                      editable={false} />
+                  </View>
+                  <View style={[Styles.center, { flex:1, backgroundColor: 'transparent'}]}>
+                    <Text style={{fontSize: 10, color: Colors.textSecondary}}>Monday to Friday 4:30AM~8PM</Text>
+                  </View>
+              </View>
+            </View>
+            <View style={{width: Metrics.screenWidth, height: Metrics.screenHeight * 0.5, backgroundColor: 'black'}}>              
+              <Image
+                style={{width: Metrics.screenWidth, height: Metrics.screenHeight * 0.5, opacity: 0.5}}
+                resizeMode={'stretch'}
+                source={Images.store2} >                  
+              </Image>  
+              <View
+                style={{width: Metrics.screenWidth, height: Metrics.screenHeight * 0.5, position:'absolute', right: 0, left:0, bottom: 0, top: 0}}
+                resizeMode={'stretch'}>
+                <View style={{ flex:0.3, backgroundColor: 'transparent'}}></View>
+                  <View style={[Styles.center, { flex:1.3, flexDirection: 'row', backgroundColor: 'transparent'}]}>
+                    <View style={Styles.center}>
+                      <Icon
+                        style={{fontSize: 20, color: Colors.textSecondary}}
+                        containerStyle={Styles.center}
+                        color={Colors.textPrimary}
+                        name={'location-arrow'}
+                      />
+                      <Text style={{margin:5, fontSize: 9, color: Colors.textSecondary}}>CHANGE STORE</Text>        
+                    </View>
+                    <Thumbnail style={{width: Metrics.screenWidth * 0.2, height: Metrics.screenWidth * 0.2, borderRadius: Metrics.screenWidth * 0.1}} source={Images.store2} />
+                    <View style={Styles.center}>
+                      <Icon
+                        style={{fontSize: 20, color: Colors.textSecondary}}
+                        containerStyle={Styles.center}
+                        color={Colors.textPrimary}
+                        name={'heart-o'}
+                      />
+                      <Text style={{margin:5, fontSize: 9, color: Colors.textSecondary}}>SET AS A FAVORITE</Text>        
+                    </View>
+                  </View>
+                  <View style={{ flex:1, backgroundColor: 'transparent', alignItems: 'center'}}>
+                    <Text style={{fontSize: 13, color: Colors.textSecondary}}>STARLING</Text>
+                    <Text style={{fontSize: 10, color: Colors.textSecondary}}>727 MANHATTAN AVE, PROOKLYN, NY 11222, USA</Text>
+                    <Rating
+                      style={{marginTop: 30}}
+                      rating={4}
+                      max={5}
+                      iconWidth={Metrics.starSize / 4}
+                      iconHeight={Metrics.starSize / 4}
+                      editable={false} />
+                  </View>
+                  <View style={[Styles.center, { flex:1, backgroundColor: 'transparent'}]}>
+                    <Text style={{fontSize: 10, color: Colors.textSecondary}}>Monday to Friday 4:30AM~8PM</Text>
+                  </View>
+              </View>
+            </View><View style={{width: Metrics.screenWidth, height: Metrics.screenHeight * 0.5, backgroundColor: 'black'}}>              
+              <Image
+                style={{width: Metrics.screenWidth, height: Metrics.screenHeight * 0.5, opacity: 0.5}}
+                resizeMode={'stretch'}
+                source={Images.store2} >                  
+              </Image>  
+              <View
+                style={{width: Metrics.screenWidth, height: Metrics.screenHeight * 0.5, position:'absolute', right: 0, left:0, bottom: 0, top: 0}}
+                resizeMode={'stretch'}>
+                <View style={{ flex:0.3, backgroundColor: 'transparent'}}></View>
+                  <View style={[Styles.center, { flex:1.3, flexDirection: 'row', backgroundColor: 'transparent'}]}>
+                    <View style={Styles.center}>
+                      <Icon
+                        style={{fontSize: 20, color: Colors.textSecondary}}
+                        containerStyle={Styles.center}
+                        color={Colors.textPrimary}
+                        name={'location-arrow'}
+                      />
+                      <Text style={{margin:5, fontSize: 9, color: Colors.textSecondary}}>CHANGE STORE</Text>        
+                    </View>
+                    <Thumbnail style={{width: Metrics.screenWidth * 0.2, height: Metrics.screenWidth * 0.2, borderRadius: Metrics.screenWidth * 0.1}} source={Images.store2} />
+                    <View style={Styles.center}>
+                      <Icon
+                        style={{fontSize: 20, color: Colors.textSecondary}}
+                        containerStyle={Styles.center}
+                        color={Colors.textPrimary}
+                        name={'heart-o'}
+                      />
+                      <Text style={{margin:5, fontSize: 9, color: Colors.textSecondary}}>SET AS A FAVORITE</Text>        
+                    </View>
+                  </View>
+                  <View style={{ flex:1, backgroundColor: 'transparent', alignItems: 'center'}}>
+                    <Text style={{fontSize: 13, color: Colors.textSecondary}}>STARLING</Text>
+                    <Text style={{fontSize: 10, color: Colors.textSecondary}}>727 MANHATTAN AVE, PROOKLYN, NY 11222, USA</Text>
+                    <Rating
+                      style={{marginTop: 30}}
+                      rating={4}
+                      max={5}
+                      iconWidth={Metrics.starSize / 4}
+                      iconHeight={Metrics.starSize / 4}
+                      editable={false} />
+                  </View>
+                  <View style={[Styles.center, { flex:1, backgroundColor: 'transparent'}]}>
+                    <Text style={{fontSize: 10, color: Colors.textSecondary}}>Monday to Friday 4:30AM~8PM</Text>
+                  </View>
+              </View>
+            </View>
+            <View style={{width: Metrics.screenWidth, height: Metrics.screenHeight * 0.5, backgroundColor: 'black'}}>              
+              <Image
+                style={{width: Metrics.screenWidth, height: Metrics.screenHeight * 0.5, opacity: 0.5}}
+                resizeMode={'stretch'}
+                source={Images.store1} >                  
+              </Image>  
+              <View
+                style={{width: Metrics.screenWidth, height: Metrics.screenHeight * 0.5, position:'absolute', right: 0, left:0, bottom: 0, top: 0}}
+                resizeMode={'stretch'}>
+                <View style={{ flex:0.3, backgroundColor: 'transparent'}}></View>
+                  <View style={[Styles.center, { flex:1.3, flexDirection: 'row', backgroundColor: 'transparent'}]}>
+                    <View style={Styles.center}>
+                      <Icon
+                        style={{fontSize: 20, color: Colors.textSecondary}}
+                        containerStyle={Styles.center}
+                        color={Colors.textPrimary}
+                        name={'location-arrow'}
+                      />
+                      <Text style={{margin:5, fontSize: 9, color: Colors.textSecondary}}>CHANGE STORE</Text>        
+                    </View>
+                    <Thumbnail style={{width: Metrics.screenWidth * 0.2, height: Metrics.screenWidth * 0.2, borderRadius: Metrics.screenWidth * 0.1}} source={Images.store1} />
+                    <View style={Styles.center}>
+                      <Icon
+                        style={{fontSize: 20, color: Colors.textSecondary}}
+                        containerStyle={Styles.center}
+                        color={Colors.textPrimary}
+                        name={'heart-o'}
+                      />
+                      <Text style={{margin:5, fontSize: 9, color: Colors.textSecondary}}>SET AS A FAVORITE</Text>        
+                    </View>
+                  </View>
+                  <View style={{ flex:1, backgroundColor: 'transparent', alignItems: 'center'}}>
+                    <Text style={{fontSize: 13, color: Colors.textSecondary}}>STARLING</Text>
+                    <Text style={{fontSize: 10, color: Colors.textSecondary}}>727 MANHATTAN AVE, PROOKLYN, NY 11222, USA</Text>
+                    <Rating
+                      style={{marginTop: 30}}
+                      rating={4}
+                      max={5}
+                      iconWidth={Metrics.starSize / 4}
+                      iconHeight={Metrics.starSize / 4}
+                      editable={false} />
+                  </View>
+                  <View style={[Styles.center, { flex:1, backgroundColor: 'transparent'}]}>
+                    <Text style={{fontSize: 10, color: Colors.textSecondary}}>Monday to Friday 4:30AM~8PM</Text>
+                  </View>
+              </View>
             </View>
           </Swiper>
         <View style={{flexDirection: 'row', height: 40, alignItems: 'center', justifyContent: 'center'}}>
@@ -170,7 +311,7 @@ class TabHome extends Component {
             size={Metrics.screenHeight / 30}
           />
           <TextInput
-            style={{ margin: 5, height: 30, width: Metrics.screenWidth * 0.8, borderBottomWidth: 1, borderColor: 'black'}}
+            style={{ marginHorizontal: 5, width: Metrics.screenWidth * 0.8}}
             onChangeText={(text) => this.setState({text})}
             placeholder="Search"
           />

@@ -27,6 +27,14 @@ const Styles = {
     justifyContent: 'center',
     alignItems: 'center',
   },
+  left: {
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  right: {
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
   buttonShadow: {
     shadowOpacity: 0.3,
     shadowOffset: {

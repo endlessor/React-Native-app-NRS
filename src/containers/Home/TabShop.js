@@ -23,15 +23,7 @@ class TabShop extends Component {
   constructor(props) {
     super(props);
   }
-  _renderGridCell = data => (
-    <View style={{padding: 5}}>
-      <Thumbnail style={{width: Metrics.screenWidth * 0.5 - 10, height: Metrics.screenWidth * 0.5, borderRadius: 5, padding :5}} source={Images.store1} >
-        <View style={{height:40, backgroundColor:'rgba(40, 40, 40, 0.6)', position:'absolute', bottom:0, right:0, left:0, justifyContent:'center', alignItems:'center'}}>
-          <Text style={{color:'white'}}>{data}</Text>
-        </View>        
-      </Thumbnail>      
-    </View>
-  )
+  
   replaceRoute(route) {
     this.props.replaceRoute(route);
   }
@@ -42,12 +34,42 @@ class TabShop extends Component {
     Global.detailData = item;
     this.props.setDetail(true);
   }
-  imageLoaded() {
-    this.setState({viewRef: findNodeHandle(this.refs.backgroundImage)})
-  }
+  
+  _renderGridCell = data => (
+    <View style={{padding: 5}}>
+      <TouchableOpacity onPress={() => this.pushNewRoute('store')}>
+        <Thumbnail style={{width: Metrics.screenWidth * 0.5 - 10, height: Metrics.screenWidth * 0.5, borderRadius: 5, padding :5}} source={Images.store1} >
+          <View style={{height:40, backgroundColor:'rgba(40, 40, 40, 0.6)', position:'absolute', bottom:0, right:0, left:0, justifyContent:'center', alignItems:'center'}}>
+            <Text style={{color:'white'}}>{data}</Text>
+          </View>        
+        </Thumbnail>
+      </TouchableOpacity>
+    </View>
+  )
   render() {
     return (
-      <View style={[Styles.fullScreen, {backgroundColor:'white', height:Metrics.screenHeight - 50}]}>
+      <View style={[Styles.fullScreen, {backgroundColor:'white'}]}>
+        <View style={[styles.headerView, {backgroundColor: Colors.brandPrimary, flexDirection:'row'}]}>
+          <Icon
+              style={{fontSize: 20, color: Colors.textSecondary, marginLeft:20}}
+              containerStyle={Styles.center}
+              color={Colors.textPrimary}
+              name={'bars'}/>
+          <Text style={{flex:1, color:'white', fontSize:15, marginLeft:20}}> Shop</Text>
+          <Icon
+              style={{fontSize: 20, color: Colors.textSecondary, marginLeft:20}}
+              containerStyle={Styles.center}
+              color={Colors.textPrimary}
+              name={'search'}/>
+          <Image source={Images.ic_barcode_scan}
+            style={{ width: 30, height: 30, marginLeft:20, tintColor:'white'}}
+          />              
+          <Icon
+              style={{fontSize: 20, color: Colors.textSecondary, marginLeft:20, marginRight:20}}
+              containerStyle={Styles.center}
+              color={Colors.textPrimary}
+              name={'shopping-cart'}/>          
+        </View>
         <Content style={{backgroundColor: '#fff', flex: 1}}>
           <SudokuGrid
             columnCount={2}

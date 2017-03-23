@@ -83,18 +83,6 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 
-repositories {
-    maven { url 'https://github.com/500px/500px-android-blur/raw/master/releases/' }
-}
-
-buildscript {
-    repositories {
-        maven { url 'https://github.com/500px/500px-android-blur/raw/master/releases/' }
-    }
-    dependencies {
-        classpath 'com.fivehundredpx:blurringview:1.0.0'
-    }
-}
 android {
     compileSdkVersion 23
     buildToolsVersion '25.0.0'
@@ -141,12 +129,9 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-blur')
     compile project(':react-native-vector-icons')
-    compile project(':react-native-maps')
     compile project(':react-native-image-picker')
     compile project(':react-native-i18n')
-    compile project(':react-native-video')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:25.0.0"
     compile "com.facebook.react:react-native:+"  // From node_modules
