@@ -9,7 +9,7 @@ import { setHomeTab } from '@actions/globals';
 import { Metrics, Styles, Images, Colors, Fonts } from '@theme/';
 import styles from './styles';
 
-import TabHome from './TabHome';
+// import TabHome from './TabHome';
 import TabHomeAndroid from './TabHomeAndroid';
 import TabShop from './TabShop';
 
@@ -59,7 +59,7 @@ class Home extends Component {
             renderSelectedIcon={() => this.renderTabButtonIcon('home', true)}
             onPress={() => this.setHomeTab('HOME')}
           >
-            {Platform.OS === 'ios' ? <TabHome /> : <TabHomeAndroid />}
+            <TabHomeAndroid />
           </Tab>
           <Tab
             selected={selectedTab === 'SHOP'}

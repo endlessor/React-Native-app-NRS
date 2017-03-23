@@ -96,7 +96,6 @@
       <string>MaterialIcons.ttf</string>
       <string>Octicons.ttf</string>
       <string>SimpleLineIcons.ttf</string>
-      <string>Zocial.ttf</string>
       <string>TitilliumWeb-Black.ttf</string>
       <string>TitilliumWeb-Bold.ttf</string>
       <string>TitilliumWeb-BoldItalic.ttf</string>
@@ -108,6 +107,7 @@
       <string>TitilliumWeb-Regular.ttf</string>
       <string>TitilliumWeb-SemiBold.ttf</string>
       <string>TitilliumWeb-SemiBoldItalic.ttf</string>
+      <string>Zocial.ttf</string>
     </array>
   </dict>
 </plist>
