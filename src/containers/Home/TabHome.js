@@ -19,7 +19,6 @@ import ShopCard from '@components/ShopCard'
 import SearchBox from '@components/SearchBox'
 import ProductRow from '@components/ProductRow'
 
-import { BlurView, VibrancyView } from 'react-native-blur';
 
 const shops =  [
   {
@@ -92,11 +91,11 @@ class TabHome extends Component {
             style={{ width: Metrics.screenWidth, height: Metrics.screenHeight * 0.5 }}
             resizeMode={'contain'}
             source={Images.store2}>
-            <BlurView blurType="dark" blurAmount={10} style={{ position: 'absolute', right: 0, left: 0, top: 0, bottom: 0 }}>
+            
               <Swiper height={Metrics.screenHeight * 0.5} horizontal={true} style={{ backgroundColor: 'transparent' }}>
-              {shops.map(shop => (<ShopCard shop={shop}/>)) }
+                {shops.map(shop => (<ShopCard shop={shop}/>)) }
               </Swiper>
-            </BlurView>
+            
           </Image>
           <SearchBox setText={(text) => this.setState({ text })} />
           <ListView
