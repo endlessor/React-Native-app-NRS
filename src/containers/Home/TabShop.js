@@ -63,12 +63,14 @@ class TabShop extends Component {
               name={'search'}/>
           <Image source={Images.ic_barcode_scan}
             style={{ width: 30, height: 30, marginLeft:20, tintColor:'white'}}
-          />              
+          />
+          <TouchableOpacity onPress={() => this.pushNewRoute('cart')}>              
           <Icon
               style={{fontSize: 20, color: Colors.textSecondary, marginLeft:20, marginRight:20}}
               containerStyle={Styles.center}
               color={Colors.textPrimary}
-              name={'shopping-cart'}/>          
+              name={'shopping-cart'}/>
+          </TouchableOpacity>         
         </View>
         <Content style={{backgroundColor: '#fff', flex: 1}}>
           <SudokuGrid

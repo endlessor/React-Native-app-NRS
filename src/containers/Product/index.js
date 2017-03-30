@@ -83,16 +83,18 @@ class Product extends Component {
               containerStyle={Styles.center}
               color={Colors.textPrimary}
               name={'search'}/>
+          {/*<Icon
+              style={{fontSize: 20, color: Colors.textSecondary, marginLeft:20, marginRight:20}}
+              containerStyle={Styles.center}
+              color={Colors.textPrimary}
+              name={'shopping-cart'}/>*/}
+          <TouchableOpacity onPress={() => this.pushNewRoute('cart')}> 
           <Icon
               style={{fontSize: 20, color: Colors.textSecondary, marginLeft:20, marginRight:20}}
               containerStyle={Styles.center}
               color={Colors.textPrimary}
-              name={'shopping-cart'}/>              
-          <Icon
-              style={{fontSize: 20, color: Colors.textSecondary, marginLeft:20, marginRight:20}}
-              containerStyle={Styles.center}
-              color={Colors.textPrimary}
-              name={'shopping-cart'}/>          
+              name={'shopping-cart'}/>
+          </TouchableOpacity>          
         </View>
         <ScrollView>
           <View style={[Styles.center, {padding: 10}]}>
