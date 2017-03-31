@@ -19,14 +19,17 @@ import Global from '@src/Global';
 const dataList = [
     {
         name: 'cash',
+        cost: 100,
         count: 0,
     }, 
     {
         name: 'credit',
+        cost: 30,
         count: 1,
     }, 
     {
         name: 'transfer',
+        cost: 50,
         count: 2,
     },
 ];
@@ -39,11 +42,21 @@ class Cart extends Component {
       dataSource: ds.cloneWithRows(['row 1', 'row 2']),
       viewRef: 0,
       cartList: dataList,
+      totalCost: 0,
     };
     // console.log("constructor");
     // this._onPressPlus = this._onPressPlus.bind(this);
     // this._onPressMinus = this._onPressMinus.bind(this);
     // this._onDeleteCart = this._onDeleteCart.bind(this);
+    
+  }
+
+  componentWillMount(){
+    var temp = 0;
+    this.state.cartList.map( item => {
+      temp += item.cost * item.count;
+    })
+    this.setState({totalCost: temp});
   }
 
   replaceRoute(route) {
@@ -75,7 +88,7 @@ class Cart extends Component {
             name={'shopping-cart'}/>
           <Text style={{color: Colors.buttonPrimary}}>Delivery</Text>
         </View>
-        <Text style={{ fontSize: Metrics.screenHeight / 30}}>$101.00</Text>
+        <Text style={{ fontSize: Metrics.screenHeight / 30}}>${data.cost}</Text>
       </View>
       <View style={[Styles.center, {flex: 1, flexDirection: 'column', justifyContent: 'space-between', backgroundColor: 'grey', borderBottomRightRadius:10, borderTopRightRadius:10}]}>      
         <TouchableOpacity onPress={this._onPressPlus.bind(this, data, index ) }>  
@@ -116,12 +129,14 @@ class Cart extends Component {
       var temp = this.state.cartList.concat();
       temp[index].count += 1;
       this.setState({ cartList: temp });
+      this.setState({ totalCost: this.state.totalCost + temp[index].cost});
   }
 
   _onPressMinus = (data, index) => {
       var temp = this.state.cartList.concat();
       temp[index].count -= 1;
       this.setState({ cartList: temp });
+      this.setState({ totalCost: this.state.totalCost - temp[index].cost});
   }
 
   _onDeleteCart = (data, index) => {
@@ -154,7 +169,7 @@ class Cart extends Component {
 
         <View style={[Styles.center, {backgroundColor:'white'}]}>
             <TouchableOpacity style={[Styles.center, { backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.7, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.15, borderRadius: 5}]}>
-                <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>CHECKOUT NOW</Text>
+                <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>CHECKOUT NOW   ${this.state.totalCost}</Text>
             </TouchableOpacity>
         </View>
       </View>
