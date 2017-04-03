@@ -1,6 +1,7 @@
 const colors = {
   brandPrimary: '#C58BEA',
   buttonPrimary: '#005b18',
+  buttonSecondary: '#0080FF',
   brandSecondary: '#FFFFFF',
   brandInfo: '#3D69AF',
   brandWarn: '#F7CC5D',

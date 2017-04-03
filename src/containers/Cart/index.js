@@ -6,6 +6,7 @@ import { Container, Content, Card, CardItem, Left, Right, Body, Thumbnail, Text,
 import Swiper from 'react-native-swiper'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import SudokuGrid from 'react-native-smart-sudoku-grid';
+import Modal from 'react-native-simple-modal';
 
 import { replaceRoute, pushNewRoute, popRoute } from '@actions/route';
 import { setDetail } from '@actions/globals';
@@ -18,19 +19,19 @@ import homeData from '../../dummy/homeData.json';
 import Global from '@src/Global';
 const dataList = [
     {
-        name: 'cash',
+        name: 'Bread',
         cost: 100,
-        count: 0,
+        count: 1,
     }, 
     {
-        name: 'credit',
+        name: 'Apple',
         cost: 30,
         count: 1,
     }, 
     {
-        name: 'transfer',
+        name: 'Pork',
         cost: 50,
-        count: 2,
+        count: 1,
     },
 ];
 
@@ -43,6 +44,8 @@ class Cart extends Component {
       viewRef: 0,
       cartList: dataList,
       totalCost: 0,
+      open1: false,
+      open2: false,
     };
     // console.log("constructor");
     // this._onPressPlus = this._onPressPlus.bind(this);
@@ -74,11 +77,11 @@ class Cart extends Component {
     
     <View style={{width: Metrics.screenWidth * 0.95, alignSelf: 'center', marginTop: 10, height: Metrics.screenWidth * 0.45, backgroundColor: 'white', borderRadius: 10, flexDirection:'row'}}>
       <View style={{flex: 3}}>
-        <Image source={Images.food1} style={{ flex: 1, width: null, height: null, margin: 10,}}/>
+        <Image source={Images.food1} style={{ flex: 1, width: null, height: null, margin: 10}}/>
       </View>
             
       <View style={{flex: 3, backgroundColor: '#ffffff',  justifyContent: 'space-between'}}>
-        <Text numberOfLines={2} style={{ fontSize: Metrics.screenHeight / 30}}>{data.name}</Text>
+        <Text style={{ marginTop: 10, fontSize: Metrics.screenHeight / 30}}>{data.name}</Text>
         <Text>17 oz</Text>
         <View style={[Styles.left, { flexDirection: 'row'}]}>
           <Icon
@@ -88,12 +91,12 @@ class Cart extends Component {
             name={'shopping-cart'}/>
           <Text style={{color: Colors.buttonPrimary}}>Delivery</Text>
         </View>
-        <Text style={{ fontSize: Metrics.screenHeight / 30}}>${data.cost}</Text>
+        <Text style={{ marginBottom: 10, fontSize: Metrics.screenHeight / 30}}>${data.cost}</Text>
       </View>
       <View style={[Styles.center, {flex: 1, flexDirection: 'column', justifyContent: 'space-between', backgroundColor: 'grey', borderBottomRightRadius:10, borderTopRightRadius:10}]}>      
         <TouchableOpacity onPress={this._onPressPlus.bind(this, data, index ) }>  
             <Icon
-                style={{fontSize: 20, color: 'white', marginRight: 5,}}
+                style={{marginTop: 20, fontSize: 20, color: 'white', marginRight: 2}}
                 containerStyle={Styles.center}
                 color={Colors.textPrimary}
                 name={'plus'}/>
@@ -101,19 +104,19 @@ class Cart extends Component {
         <Text style={{color: 'white'}}>{data.count}</Text>
         <TouchableOpacity>
             {
-                data.count > 0 &&
+                data.count > 1 &&
                 <Icon
                     onPress={ this._onPressMinus.bind(this, data, index ) }
-                    style={{fontSize: 20, color: 'white', marginRight: 5,}}
+                    style={{marginBottom: 20, fontSize: 20, color: 'white', marginRight: 2}}
                     containerStyle={Styles.center}
                     color={Colors.textPrimary}
                     name={'minus'}/>
             }
             {
-                data.count == 0 &&
+                data.count == 1 &&
                 <Icon
                     onPress={ this._onDeleteCart.bind(this, data, index ) }
-                    style={{fontSize: 20, color: 'white', marginRight: 5,}}
+                    style={{marginBottom: 20, fontSize: 20, color: 'white', marginRight: 2}}
                     containerStyle={Styles.center}
                     color={Colors.textPrimary}
                     name={'trash-o'}/>
@@ -127,6 +130,7 @@ class Cart extends Component {
   _onPressPlus = (data, index) => {
       console.log("adsf");
       var temp = this.state.cartList.concat();
+      console.log (temp);
       temp[index].count += 1;
       this.setState({ cartList: temp });
       this.setState({ totalCost: this.state.totalCost + temp[index].cost});
@@ -168,10 +172,61 @@ class Cart extends Component {
         </ScrollView>
 
         <View style={[Styles.center, {backgroundColor:'white'}]}>
-            <TouchableOpacity style={[Styles.center, { backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.7, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.15, borderRadius: 5}]}>
+            <TouchableOpacity onPress={() => this.setState({open1: true})} style={[Styles.center, { backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.7, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.15, borderRadius: 5}]}>
                 <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>CHECKOUT NOW   ${this.state.totalCost}</Text>
             </TouchableOpacity>
         </View>
+        <Modal
+          offset={this.state.offset}
+          open={this.state.open1}
+          modalDidOpen={() => console.log('modal did open')}
+          modalDidClose={() => this.setState({open1: false})}
+          style={{alignItems: 'center'}}>
+          <Text style={{textAlign:'center', fontSize: 20, marginBottom: 10}}>SPECIAL OFFER</Text>
+          <View style={{marginTop: 10, alignSelf: 'center', backgroundColor: 'white', borderRadius: 10, flexDirection:'row'}}>
+            <View style={{flex: 2}}>
+              <Image source={Images.food1} style={{ flex: 1, width: null, height: null, margin: 10,}}/>
+            </View>
+            
+            <View style={{flex: 3, backgroundColor: '#ffffff',  justifyContent: 'space-between'}}>
+              <Text numberOfLines={2} style={{ fontSize: Metrics.screenHeight / 30}}>Chocolate Pound Cake</Text>
+              <View style={[Styles.left, { marginTop: 10, flexDirection: 'row'}]}>
+                <Icon
+                  style={{fontSize: 15, color: Colors.buttonPrimary, marginRight: 5,}}
+                  containerStyle={Styles.center}
+                  color={Colors.textPrimary}
+                  name={'shopping-cart'}/>
+                <Text style={{color: Colors.buttonPrimary}}>In Store</Text>
+              </View>
+              <Text style={{ marginTop: 10, fontSize: Metrics.screenHeight / 30}}>$5.25</Text>
+            </View>
+          </View>
+          <View style={{marginTop: 20, alignSelf: 'center', backgroundColor: 'white', borderRadius: 10, flexDirection:'row'}}>
+            <TouchableOpacity onPress={() => this.setState({open1: false, open2: true})} style={[Styles.center, { flex: 1, backgroundColor: Colors.buttonSecondary, width: Metrics.screenWidth * 0.7, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.15, borderRadius: 5}]}>
+              <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>NO THANKS</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.setState({open1: false, open2: true})} style={[Styles.center, { flex: 1, marginLeft: 10, backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.7, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.15, borderRadius: 5}]}>
+              <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>ADD TO CART</Text>
+            </TouchableOpacity>
+          </View>
+        </Modal>
+         <Modal
+          offset={this.state.offset}
+          open={this.state.open2}
+          modalDidOpen={() => console.log('modal did open')}
+          modalDidClose={() => this.setState({open2: false})}
+          style={{alignItems: 'center'}}>
+          <Text style={{textAlign:'center', fontSize: 15, marginTop: 5}}>CHECKOUT</Text>
+          <Text style={{textAlign:'center', fontSize: 15, marginTop: 15}}>How do you want to get your order?</Text>
+          <TouchableOpacity style={[Styles.center, { marginLeft: 80, backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.4, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.5, borderRadius: 5}]}>
+            <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>PICKUP</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[Styles.center, { marginLeft: 80, backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.4, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.5, borderRadius: 5}]}>
+            <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>DELIVERY</Text>
+          </TouchableOpacity>
+          <Text style={{ marginTop: Metrics.footerHeight * 0.5, textAlign: 'center', fontSize: Metrics.screenHeight / 50}}>Next delivery: Monday 13th 2.00 pm</Text>
+          <Text style={{ textAlign: 'center', fontSize: Metrics.screenHeight / 50}}>Delivery fee$1.70</Text>
+        </Modal>
       </View>
     );
   }

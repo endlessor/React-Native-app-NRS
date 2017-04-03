@@ -22,6 +22,7 @@
     "react-native-keyboard-spacer": "^0.3.1",
     "react-native-modal-dropdown": "^0.4.1",
     "react-native-nav": "^1.1.4",
+    "react-native-simple-modal": "^5.0.0",
     "react-native-smart-sudoku-grid": "^1.0.9",
     "react-native-swiper": "^1.5.4",
     "react-native-vector-icons": "git+https://github.com/NajibRajak/react-native-vector-icons.git",
