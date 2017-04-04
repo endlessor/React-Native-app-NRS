@@ -186,6 +186,11 @@ class Cart extends Component {
     this.state.cartList.splice(cholocate)
   }
 
+  toCheckout = () => {
+    this.setState({open2: false})
+    this.pushNewRoute('checkout')
+  }
+
   render() {
     return (
       <View style={[Styles.fullScreen, {backgroundColor:'lightgrey'}]}> 
@@ -308,7 +313,7 @@ class Cart extends Component {
           <TouchableOpacity style={[Styles.center, { marginLeft: Metrics.screenWidth * 0.25, backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.4, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.5, borderRadius: 5}]}>
             <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>PICKUP</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[Styles.center, { marginLeft: Metrics.screenWidth * 0.25, backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.4, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.5, borderRadius: 5}]}>
+          <TouchableOpacity onPress={() => this.toCheckout()} style={[Styles.center, { marginLeft: Metrics.screenWidth * 0.25, backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.4, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.5, borderRadius: 5}]}>
             <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>DELIVERY</Text>
           </TouchableOpacity>
           <Text style={{ marginTop: Metrics.footerHeight * 0.5, textAlign: 'center', fontSize: Metrics.screenHeight / 50}}>Next delivery: Monday 13th 2.00 pm</Text>
