@@ -35,6 +35,12 @@ const dataList = [
     },
 ];
 
+const cholocate = {
+    name: 'Choco',
+    cost: 1,
+    count: 1,
+  };
+
 class Cart extends Component {
   constructor(props) {
     super(props);
@@ -46,6 +52,9 @@ class Cart extends Component {
       totalCost: 0,
       open1: false,
       open2: false,
+      choco: false,
+      specOffer: cholocate,
+      clickedAddCart: false,
     };
     // console.log("constructor");
     // this._onPressPlus = this._onPressPlus.bind(this);
@@ -128,32 +137,60 @@ class Cart extends Component {
   )
 
   _onPressPlus = (data, index) => {
-      console.log("adsf");
-      var temp = this.state.cartList.concat();
-      console.log (temp);
+      var temp = this.state.cartList;
       temp[index].count += 1;
       this.setState({ cartList: temp });
       this.setState({ totalCost: this.state.totalCost + temp[index].cost});
   }
 
   _onPressMinus = (data, index) => {
-      var temp = this.state.cartList.concat();
+      var temp = this.state.cartList;
       temp[index].count -= 1;
       this.setState({ cartList: temp });
       this.setState({ totalCost: this.state.totalCost - temp[index].cost});
   }
 
   _onDeleteCart = (data, index) => {
-      var temp = this.state.cartList.concat();
+      var temp = this.state.cartList;
+      this.setState({ totalCost: this.state.totalCost - temp[index].cost});
       temp.splice(index, 1);
       this.setState({ cartList: temp });
+  }
+
+  _onAddCart = () => {
+    this.state.cartList.push(cholocate);
+    this.setState({choco: true});
+    this.setState({ totalCost: this.state.totalCost + this.state.specOffer.cost});
+    this.setState({clickedAddCart: true});
+  }
+
+  _onBack = () => {
+    this.props.popRoute()
+    this.setState({open2: false})
+  }
+
+  _onModal = () => {
+    if (this.state.open1 == false && this.state.open2 == false)
+      this.setState({open1: true})
+  }
+
+  _onPlus = () => {
+    this.state.specOffer.count += 1
+  }
+
+   _onMinus = () => {
+    this.state.specOffer.count -= 1
+  }
+
+   _onDelete = () => {
+    this.state.cartList.splice(cholocate)
   }
 
   render() {
     return (
       <View style={[Styles.fullScreen, {backgroundColor:'lightgrey'}]}> 
         <View style={[styles.headerView, {backgroundColor: Colors.brandPrimary, flexDirection:'row'}]}>
-          <TouchableOpacity onPress={() => this.props.popRoute()}>
+          <TouchableOpacity onPress={() => this._onBack()}>
           <Icon
               style={{fontSize: 20, color: Colors.textSecondary, marginLeft:20}}
               containerStyle={Styles.center}
@@ -172,7 +209,7 @@ class Cart extends Component {
         </ScrollView>
 
         <View style={[Styles.center, {backgroundColor:'white'}]}>
-            <TouchableOpacity onPress={() => this.setState({open1: true})} style={[Styles.center, { backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.7, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.15, borderRadius: 5}]}>
+            <TouchableOpacity onPress={() => this._onModal()} style={[Styles.center, { backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.7, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.15, borderRadius: 5}]}>
                 <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>CHECKOUT NOW   ${this.state.totalCost}</Text>
             </TouchableOpacity>
         </View>
@@ -203,11 +240,61 @@ class Cart extends Component {
           </View>
           <View style={{marginTop: 20, alignSelf: 'center', backgroundColor: 'white', borderRadius: 10, flexDirection:'row'}}>
             <TouchableOpacity onPress={() => this.setState({open1: false, open2: true})} style={[Styles.center, { flex: 1, backgroundColor: Colors.buttonSecondary, width: Metrics.screenWidth * 0.7, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.15, borderRadius: 5}]}>
-              <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>NO THANKS</Text>
+              {
+                this.state.choco == true &&
+                <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>DONE</Text>
+              }
+
+              {
+                this.state.choco == false &&
+                <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>NO THANKS</Text>
+              }
+
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.setState({open1: false, open2: true})} style={[Styles.center, { flex: 1, marginLeft: 10, backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.7, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.15, borderRadius: 5}]}>
-              <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>ADD TO CART</Text>
-            </TouchableOpacity>
+            {
+              this.state.clickedAddCart == false &&
+              <TouchableOpacity onPress={() => this._onAddCart()} style={[Styles.center, { flex: 1, marginLeft: 10, backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.7, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.15, borderRadius: 5}]}>
+              
+                <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>ADD TO CART</Text>
+              
+              </TouchableOpacity>
+            }
+
+            {
+              this.state.clickedAddCart == true &&
+              <View style={[Styles.center, { flexDirection:'row', flex: 1, marginLeft: 10, backgroundColor: 'grey', justifyContent: 'space-between', width: Metrics.screenWidth * 0.7, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.15, borderRadius: 5}]}>      
+                  <TouchableOpacity>  
+                      <Icon
+                          //onPress={this._onPlus()}
+                          style={{fontSize: 20, color: 'white'}}
+                          containerStyle={Styles.center}
+                          color={Colors.textPrimary}
+                          name={'plus'}/>
+                  </TouchableOpacity>
+                  <Text style={{color: 'white'}}>{this.state.specOffer.count}</Text>
+                  <TouchableOpacity>
+                      {
+                          this.state.specOffer.count > 1 &&
+                          <Icon
+                              //onPress={ this._onMinus() }
+                              style={{fontSize: 20, color: 'white'}}
+                              containerStyle={Styles.center}
+                              color={Colors.textPrimary}
+                              name={'minus'}/>
+                      }
+                      {
+                          this.state.specOffer.count == 1 &&
+                          <Icon
+                              //onPress={ this._onDelete() }
+                              style={{fontSize: 20, color: 'white'}}
+                              containerStyle={Styles.center}
+                              color={Colors.textPrimary}
+                              name={'trash-o'}/>
+                      }
+                  </TouchableOpacity>
+              </View>
+            }
+      
           </View>
         </Modal>
          <Modal
@@ -218,10 +305,10 @@ class Cart extends Component {
           style={{alignItems: 'center'}}>
           <Text style={{textAlign:'center', fontSize: 15, marginTop: 5}}>CHECKOUT</Text>
           <Text style={{textAlign:'center', fontSize: 15, marginTop: 15}}>How do you want to get your order?</Text>
-          <TouchableOpacity style={[Styles.center, { marginLeft: 80, backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.4, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.5, borderRadius: 5}]}>
+          <TouchableOpacity style={[Styles.center, { marginLeft: Metrics.screenWidth * 0.25, backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.4, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.5, borderRadius: 5}]}>
             <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>PICKUP</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[Styles.center, { marginLeft: 80, backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.4, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.5, borderRadius: 5}]}>
+          <TouchableOpacity style={[Styles.center, { marginLeft: Metrics.screenWidth * 0.25, backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.4, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.5, borderRadius: 5}]}>
             <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>DELIVERY</Text>
           </TouchableOpacity>
           <Text style={{ marginTop: Metrics.footerHeight * 0.5, textAlign: 'center', fontSize: Metrics.screenHeight / 50}}>Next delivery: Monday 13th 2.00 pm</Text>
