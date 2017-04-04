@@ -2,7 +2,7 @@ import { Platform, TextInput, Image, findNodeHandle, View, ListView, TouchableOp
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import I18n from 'react-native-i18n';
-import { Container, Content, Card, CardItem, Left, Right, Body, Thumbnail, Text, Button } from 'native-base';
+import { Container, Content, Card, CardItem, Left, Right, Body, Thumbnail, Text, Button , Form, Item, Input, Label} from 'native-base';
 import Swiper from 'react-native-swiper'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import SudokuGrid from 'react-native-smart-sudoku-grid';
@@ -43,13 +43,49 @@ class Checkout extends Component {
           </TouchableOpacity>
           <Text style={{flex:1, color:'white', fontSize:15, marginLeft:20}}> Checkout </Text>
         </View>
+        <View style={{ backgroundColor: 'lightgrey', width: Metrics.screenWidth, height: Metrics.footerHeight * 0.4, marginTop: Metrics.footerHeight * 0.15}}>
+            <Text style={{ marginLeft: 20, fontSize: Metrics.footerHeight * 0.25}}>A D D R E S S</Text>
+        </View>
         
-        <View style={[Styles.center, {marginTop: Metrics.screenHeight * 0.85}]}>
+        <Form style={{backgroundColor:'white'}}>
+            <Item floatingLabel last>
+                <Label>Full name</Label>
+                <Input />
+            </Item>
+            <Item floatingLabel last>
+                <Label>Mobile</Label>
+                <Input />
+            </Item>
+            <Item floatingLabel last>
+                <Label>Address</Label>
+                <Input />
+            </Item>
+            <Item floatingLabel last>
+                <Label>Apt.</Label>
+                <Input />
+            </Item>
+            <Item floatingLabel last>
+                <Label>City</Label>
+                <Input />
+            </Item>
+            <Item floatingLabel last>
+                <Label>Zip Code</Label>
+                <Input />
+            </Item>
+            <Item floatingLabel last>
+                <Label>Additional instructions</Label>
+                <Input />
+            </Item>
+        </Form>
+               
+        <View style={[Styles.center, {marginTop: Metrics.screenHeight * 0.2}]}>
             <TouchableOpacity  style={[Styles.center, { backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.6, height: Metrics.footerHeight * 0.6, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.15, borderRadius: 5}]}>
                 <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>SCHEDULE</Text>
             </TouchableOpacity>
         </View>
-      </View>
+     
+     
+        </View> 
     );
   }
 }
