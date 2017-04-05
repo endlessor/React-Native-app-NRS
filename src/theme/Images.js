@@ -10,7 +10,8 @@ const images = {
   store4:require('@assets/images/store4.jpeg'),
 
   credit:require('@assets/images/ic_credit.png'),
-  pay:require('@assets/images/ic_pay.png')
+  pay:require('@assets/images/ic_pay.png'),
+  qr_stub:require('@assets/images/qr_stub.png'),
 };
 
 export default images;

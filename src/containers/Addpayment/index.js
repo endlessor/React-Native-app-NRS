@@ -1,4 +1,4 @@
-import { Platform, TextInput, Image, findNodeHandle, View, ListView, TouchableOpacity, ScrollView, Alert } from 'react-native';
+import { Platform, TextInput, Image, findNodeHandle, View, ListView, TouchableOpacity, ScrollView, Alert, Switch } from 'react-native';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import I18n from 'react-native-i18n';
@@ -21,6 +21,10 @@ import Global from '@src/Global';
 class Addpayment extends Component {
   constructor(props) {
     super(props);
+    // this.state = {
+    //     trueSwitchIsOn: true,
+    // falseSwitchIsOn: false,
+    // };
   }
 
   replaceRoute(route) {
@@ -73,17 +77,21 @@ class Addpayment extends Component {
             </Item>
         </Form>
 
-        <View style={{justifyContent:'center', backgroundColor:'white', height:Metrics.screenHeight * 0.05}}>
-            <Text> Use this card in future orders </Text>
-            {/*<Container>
-             <Segment>
-                <Button first><Text></Text></Button>
-                <Button last active><Text></Text></Button>
-            </Segment>
-            </Container>*/}
+        <View style={{flexDirection:'row', backgroundColor:'white', height:Metrics.screenHeight * 0.065}}>
+            <View style={{justifyContent:'center', flex:0.7}}>
+                <Text> Use this card in future orders </Text>
+            </View>
+            <View style={{justifyContent:'center', flex:0.3}}>
+                <Container>
+                    <Segment>
+                        <Button first><Text></Text></Button>
+                        <Button last active><Text></Text></Button>
+                    </Segment>
+                </Container>
+            </View>
         </View>
         <View style={[Styles.center, {marginTop: Metrics.screenHeight * 0.16}]}>
-        <TouchableOpacity  onPress={() => this.pushNewRoute('choosedeliverytime')} style={[Styles.center, { backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.6, height: Metrics.footerHeight * 0.6, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.5, borderRadius: 5}]}>
+        <TouchableOpacity  onPress={() => this.pushNewRoute('orderconfirmed')} style={[Styles.center, { backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.6, height: Metrics.footerHeight * 0.6, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.5, borderRadius: 5}]}>
             <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>NEXT</Text>
         </TouchableOpacity>
         </View>

@@ -18,6 +18,7 @@ import Cart from '@containers/Cart'
 import Checkout from '@containers/Checkout';
 import Choosedeliverytime from '@containers/Choosedeliverytime';
 import Addpayment from '@containers/Addpayment';
+import Orderconfirmed from '@containers/Orderconfirmed';
 
 import SideBar from '@containers/SideBar';
 
@@ -110,6 +111,8 @@ class AppNavigator extends Component {
         return <Choosedeliverytime navigator={navigator} {...route.passProps} />;
       case 'addpayment':
         return <Addpayment navigator={navigator} {...route.passProps} />;
+      case 'orderconfirmed':
+        return <Orderconfirmed navigator={navigator} {...route.passProps} />;  
       default :
         return <Home navigator={navigator} {...route.passProps} />;
     }
