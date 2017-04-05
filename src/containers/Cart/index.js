@@ -56,11 +56,6 @@ class Cart extends Component {
       specOffer: cholocate,
       clickedAddCart: false,
     };
-    // console.log("constructor");
-    // this._onPressPlus = this._onPressPlus.bind(this);
-    // this._onPressMinus = this._onPressMinus.bind(this);
-    // this._onDeleteCart = this._onDeleteCart.bind(this);
-    
   }
 
   componentWillMount(){

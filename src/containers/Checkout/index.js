@@ -49,9 +49,10 @@ class Checkout extends Component {
         
         <Form style={{backgroundColor:'white'}}>
             <Item floatingLabel last>
-                <Label>Full name</Label>
+                <Label>Full name </Label>
                 <Input />
             </Item>
+            
             <Item floatingLabel last>
                 <Label>Mobile</Label>
                 <Input />
@@ -77,15 +78,12 @@ class Checkout extends Component {
                 <Input />
             </Item>
         </Form>
-               
         <View style={[Styles.center, {marginTop: Metrics.screenHeight * 0.2}]}>
-            <TouchableOpacity  style={[Styles.center, { backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.6, height: Metrics.footerHeight * 0.6, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.15, borderRadius: 5}]}>
-                <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>SCHEDULE</Text>
-            </TouchableOpacity>
+        <TouchableOpacity  onPress={() => this.pushNewRoute('choosedeliverytime')} style={[Styles.center, { backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.6, height: Metrics.footerHeight * 0.6, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.15, borderRadius: 5}]}>
+            <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>SCHEDULE</Text>
+        </TouchableOpacity>
         </View>
-     
-     
-        </View> 
+     </View> 
     );
   }
 }

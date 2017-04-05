@@ -16,6 +16,7 @@ import Store from '@containers/Store';
 import Product from '@containers/Product';
 import Cart from '@containers/Cart'
 import Checkout from '@containers/Checkout';
+import Choosedeliverytime from '@containers/Choosedeliverytime';
 
 import SideBar from '@containers/SideBar';
 
@@ -104,6 +105,8 @@ class AppNavigator extends Component {
         return <Cart navigator={navigator} {...route.passProps} />;
       case 'checkout':
         return <Checkout navigator={navigator} {...route.passProps} />;
+      case 'choosedeliverytime':
+        return <Choosedeliverytime navigator={navigator} {...route.passProps} />;
       default :
         return <Home navigator={navigator} {...route.passProps} />;
     }
