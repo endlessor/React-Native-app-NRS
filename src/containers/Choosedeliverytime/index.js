@@ -64,6 +64,11 @@ class Choosedeliverytime extends Component {
   pushNewRoute(route) {
     this.props.pushNewRoute(route);
   }
+
+  Tocredit = () => {
+    this.setState({open:false})
+    this.pushNewRoute('addpayment')
+  }
   
   render() {
     return (
@@ -114,8 +119,8 @@ class Choosedeliverytime extends Component {
                 </ListItem>     
             </Content>
         </Container>
-        <View style={[Styles.center, {marginTop: Metrics.screenHeight * 0.2}]}>
-            <TouchableOpacity  onPress={()=>this.setState({open:true})} style={[Styles.center, { backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.6, height: Metrics.footerHeight * 0.6, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.15, borderRadius: 5}]}>
+        <View style={[Styles.center]}>
+            <TouchableOpacity  onPress={()=>this.setState({open:true})} style={[Styles.center, { backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.6, height: Metrics.footerHeight * 0.6, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.5, borderRadius: 5}]}>
                 <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>SAVE DELIVERY TIME</Text>
             </TouchableOpacity>
         </View>
@@ -127,10 +132,10 @@ class Choosedeliverytime extends Component {
           style={{alignItems: 'center'}}>
           <Text style={{textAlign:'center', fontSize: 15, marginTop: 5}}>PAYMENTS</Text>
           <Text style={{textAlign:'center', fontSize: 15, marginTop: 15}}>Choose your payment method</Text>
-          <TouchableOpacity style={[Styles.center, { marginLeft: Metrics.screenWidth * 0.25, backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.4, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.5, borderRadius: 5}]}>
+          <TouchableOpacity onPress={() => this.setState({open:false})}style={[Styles.center, { marginLeft: Metrics.screenWidth * 0.25, backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.4, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.5, borderRadius: 5}]}>
             <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>PAY AT STORE</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.toCheckout()} style={[Styles.center, { marginLeft: Metrics.screenWidth * 0.25, backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.4, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.5, borderRadius: 5}]}>
+          <TouchableOpacity onPress={() => this.Tocredit()} style={[Styles.center, { marginLeft: Metrics.screenWidth * 0.25, backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.4, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.5, borderRadius: 5}]}>
             <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>CREDIT</Text>
           </TouchableOpacity>
         </Modal>

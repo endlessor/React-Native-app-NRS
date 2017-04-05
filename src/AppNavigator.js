@@ -17,6 +17,7 @@ import Product from '@containers/Product';
 import Cart from '@containers/Cart'
 import Checkout from '@containers/Checkout';
 import Choosedeliverytime from '@containers/Choosedeliverytime';
+import Addpayment from '@containers/Addpayment';
 
 import SideBar from '@containers/SideBar';
 
@@ -107,6 +108,8 @@ class AppNavigator extends Component {
         return <Checkout navigator={navigator} {...route.passProps} />;
       case 'choosedeliverytime':
         return <Choosedeliverytime navigator={navigator} {...route.passProps} />;
+      case 'addpayment':
+        return <Addpayment navigator={navigator} {...route.passProps} />;
       default :
         return <Home navigator={navigator} {...route.passProps} />;
     }

@@ -2,7 +2,7 @@ import { Platform, TextInput, Image, findNodeHandle, View, ListView, TouchableOp
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import I18n from 'react-native-i18n';
-import { Container, Content, Card, CardItem, Left, Right, Body, Thumbnail, Text, Button , Form, Item, Input, Label} from 'native-base';
+import { Container, Content, Card, CardItem, Left, Right, Body, Thumbnail, Text, Button , Form, Item, Input, Label, Segment} from 'native-base';
 import Swiper from 'react-native-swiper'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import SudokuGrid from 'react-native-smart-sudoku-grid';
@@ -18,7 +18,7 @@ import styles from './styles';
 import homeData from '../../dummy/homeData.json';
 import Global from '@src/Global';
 
-class Checkout extends Component {
+class Addpayment extends Component {
   constructor(props) {
     super(props);
   }
@@ -41,47 +41,50 @@ class Checkout extends Component {
               color={Colors.textPrimary}
               name={'arrow-left'}/>
           </TouchableOpacity>
-          <Text style={{flex:1, color:'white', fontSize:15, marginLeft:20}}> Checkout </Text>
+          <Text style={{flex:1, color:'white', fontSize:15, marginLeft:20}}> Add payment </Text>
         </View>
         <View style={{ backgroundColor: 'lightgrey', width: Metrics.screenWidth, height: Metrics.footerHeight * 0.4, marginTop: Metrics.footerHeight * 0.15}}>
-            <Text style={{ marginLeft: 20, fontSize: Metrics.footerHeight * 0.25}}>A D D R E S S</Text>
+            <Text style={{ marginLeft: 20, fontSize: Metrics.footerHeight * 0.25}}>S C A N  Y O U R  C A R D</Text>
         </View>
-       
+        <View style={[Styles.center, {backgroundColor:'white', height:Metrics.screenHeight * 0.2}]}>
+            <Text style={{backgroundColor:'lightgrey'}}> 1234 5678 1234 5678                </Text>
+        </View>
+        <View style={{ backgroundColor: 'lightgrey', width: Metrics.screenWidth, height: Metrics.footerHeight * 0.4, marginTop: Metrics.footerHeight * 0.15}}>
+            <Text style={{ marginLeft: 20, fontSize: Metrics.footerHeight * 0.25}}>C R E D I T  C A R D</Text>
+        </View>
+
         <Form style={{backgroundColor:'white'}}>
             <Item floatingLabel last>
-                <Label>Full name </Label>
+                <Label>Credit Card Number </Label>
                 <Input />
             </Item>
             
             <Item floatingLabel last>
-                <Label>Mobile</Label>
+                <Label>MM/YY</Label>
                 <Input />
             </Item>
             <Item floatingLabel last>
-                <Label>Address</Label>
+                <Label>CVC</Label>
                 <Input />
             </Item>
             <Item floatingLabel last>
-                <Label>Apt.</Label>
-                <Input />
-            </Item>
-            <Item floatingLabel last>
-                <Label>City</Label>
-                <Input />
-            </Item>
-            <Item floatingLabel last>
-                <Label>Zip Code</Label>
-                <Input />
-            </Item>
-            <Item floatingLabel last>
-                <Label>Additional instructions</Label>
+                <Label></Label>
                 <Input />
             </Item>
         </Form>
-        
-        <View style={[Styles.center, {marginTop: Metrics.screenHeight * 0.2}]}>
+
+        <View style={{justifyContent:'center', backgroundColor:'white', height:Metrics.screenHeight * 0.05}}>
+            <Text> Use this card in future orders </Text>
+            {/*<Container>
+             <Segment>
+                <Button first><Text></Text></Button>
+                <Button last active><Text></Text></Button>
+            </Segment>
+            </Container>*/}
+        </View>
+        <View style={[Styles.center, {marginTop: Metrics.screenHeight * 0.16}]}>
         <TouchableOpacity  onPress={() => this.pushNewRoute('choosedeliverytime')} style={[Styles.center, { backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.6, height: Metrics.footerHeight * 0.6, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.5, borderRadius: 5}]}>
-            <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>SCHEDULE</Text>
+            <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>NEXT</Text>
         </TouchableOpacity>
         </View>
      </View> 
@@ -89,7 +92,7 @@ class Checkout extends Component {
   }
 }
 
-Checkout.propTypes = {
+Addpayment.propTypes = {
   replaceRoute: React.PropTypes.func.isRequired,
   pushNewRoute: React.PropTypes.func.isRequired,
   setDetail: React.PropTypes.func.isRequired,
@@ -108,4 +111,4 @@ function mapStateToProps(state) {
   return { 
   };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Checkout);
+export default connect(mapStateToProps, mapDispatchToProps)(Addpayment);
