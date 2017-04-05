@@ -53,6 +53,7 @@ class Choosedeliverytime extends Component {
         this.state = {
             dataSource: ds.cloneWithRows(dayDates),
             bg:'white',
+            open:false,
         };
 
   }
@@ -114,10 +115,25 @@ class Choosedeliverytime extends Component {
             </Content>
         </Container>
         <View style={[Styles.center, {marginTop: Metrics.screenHeight * 0.2}]}>
-            <TouchableOpacity  style={[Styles.center, { backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.6, height: Metrics.footerHeight * 0.6, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.15, borderRadius: 5}]}>
+            <TouchableOpacity  onPress={()=>this.setState({open:true})} style={[Styles.center, { backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.6, height: Metrics.footerHeight * 0.6, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.15, borderRadius: 5}]}>
                 <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>SAVE DELIVERY TIME</Text>
             </TouchableOpacity>
         </View>
+        <Modal
+          offset={this.state.offset}
+          open={this.state.open}
+          modalDidOpen={() => console.log('modal did open')}
+          modalDidClose={() => this.setState({open: false})}
+          style={{alignItems: 'center'}}>
+          <Text style={{textAlign:'center', fontSize: 15, marginTop: 5}}>PAYMENTS</Text>
+          <Text style={{textAlign:'center', fontSize: 15, marginTop: 15}}>Choose your payment method</Text>
+          <TouchableOpacity style={[Styles.center, { marginLeft: Metrics.screenWidth * 0.25, backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.4, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.5, borderRadius: 5}]}>
+            <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>PAY AT STORE</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => this.toCheckout()} style={[Styles.center, { marginLeft: Metrics.screenWidth * 0.25, backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.4, height: Metrics.footerHeight * 0.7, marginTop: Metrics.footerHeight * 0.5, borderRadius: 5}]}>
+            <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>CREDIT</Text>
+          </TouchableOpacity>
+        </Modal>
 
         </View> 
     );
