@@ -1,4 +1,5 @@
 import { Platform, TextInput, Image, findNodeHandle, View, ListView, TouchableOpacity, ScrollView, Alert, Switch } from 'react-native';
+import DialogBox from 'react-native-dialogbox';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import I18n from 'react-native-i18n';
@@ -26,10 +27,29 @@ class Orderconfirmed extends Component {
   replaceRoute(route) {
     this.props.replaceRoute(route);
   }
+
   pushNewRoute(route) {
     this.props.pushNewRoute(route);
   }
   
+  handleDialog = () => {
+		// alert
+		// this.dialogbox.alert(1);
+    this.dialogbox.confirm({
+			title: 'Cancel my order',
+			content: ['Are you sure you want to cancel your order?'],
+			ok: {
+				text: 'YES',
+				callback: () => {
+					this.pushNewRoute('tabhome');
+				},
+			},
+			cancel: {
+				text: 'NO',
+			},
+		});
+	}
+
   render() {
     return (
       <View style={[Styles.fullScreen, {backgroundColor:'white'}]}> 
@@ -51,9 +71,11 @@ class Orderconfirmed extends Component {
                 <Text style={{margin:15}}>ORDER # 1491328422508</Text>
             </View>
             
+            <DialogBox ref={(dialogbox) => { this.dialogbox = dialogbox }}/>
+            
         </ScrollView>
         <View style={[Styles.center, {marginTop: Metrics.screenHeight * 0.16}]}>
-        <TouchableOpacity  style={[Styles.center, { backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.6, height: Metrics.footerHeight * 0.6, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.5, borderRadius: 5}]}>
+        <TouchableOpacity  onPress={this.handleDialog} style={[Styles.center, { backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.6, height: Metrics.footerHeight * 0.6, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.5, borderRadius: 5}]}>
             <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>CANCEL MY ORDER</Text>
         </TouchableOpacity>
         </View>
