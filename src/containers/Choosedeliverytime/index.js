@@ -50,11 +50,11 @@ class Choosedeliverytime extends Component {
   constructor(props) {
     super(props);
     const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-        this.state = {
-            dataSource: ds.cloneWithRows(dayDates),
-            bg:'white',
-            open:false,
-        };
+    this.state = {
+        dataSource: ds.cloneWithRows(dayDates),
+        bg:'white',
+        open:false,
+    };
 
   }
 

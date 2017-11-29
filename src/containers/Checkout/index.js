@@ -79,7 +79,7 @@ class Checkout extends Component {
             </Item>
         </Form>
         
-        <View style={[Styles.center, {marginTop: Metrics.screenHeight * 0.2}]}>
+        <View style={Styles.center}>
         <TouchableOpacity  onPress={() => this.pushNewRoute('choosedeliverytime')} style={[Styles.center, { backgroundColor: Colors.brandPrimary, width: Metrics.screenWidth * 0.6, height: Metrics.footerHeight * 0.6, marginTop: Metrics.footerHeight * 0.15, marginBottom: Metrics.footerHeight * 0.5, borderRadius: 5}]}>
             <Text style={{ fontSize: Metrics.footerHeight * 0.3, color: 'white'}}>SCHEDULE</Text>
         </TouchableOpacity>
